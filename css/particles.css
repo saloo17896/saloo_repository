@@ -1,0 +1,116 @@
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particles-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating elements */
+.floating {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.floating-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: floatUpDown 4s ease-in-out infinite;
+}
+
+.floating-square {
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: spin 6s linear infinite;
+}
+
+.floating-triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 17px solid rgba(255, 255, 255, 0.25);
+    animation: floatLeftRight 5s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-100px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes floatLeftRight {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(100px);
+    }
+}
+
+/* Mouse trail effect */
+.mouse-trail {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    background: var(--secondary-color);
+    animation: trail-fade 0.5s ease-out forwards;
+}
+
+@keyframes trail-fade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* Bubble effect */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: bubble-rise 8s infinite ease-in;
+    pointer-events: none;
+}
+
+@keyframes bubble-rise {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(2);
+        opacity: 0;
+    }
+} 

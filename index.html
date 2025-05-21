@@ -5,18 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salman Ali - Game Developer Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/particles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
-<body>
+<body class="gradient-bg">
+    <!-- Particles background -->
+    <div id="particles-js"></div>
+
     <!-- Header Section -->
-    <header>
+    <header class="transform-3d">
         <nav>
-            <div class="logo">SA</div>
+            <div class="logo shine">SA</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="glitch" data-text="Home">Home</a></li>
+                <li><a href="#about" class="glitch" data-text="About">About</a></li>
+                <li><a href="#projects" class="glitch" data-text="Projects">Projects</a></li>
+                <li><a href="#contact" class="glitch" data-text="Contact">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -27,67 +34,127 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero particles-section">
         <div class="hero-content">
-            <h1>Salman Ali</h1>
-            <h2>Game Developer</h2>
-            <p>Crafting immersive gaming experiences</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <h1 class="glitch" data-text="Salman Ali">Salman Ali</h1>
+            <h2 class="shine">Game Developer</h2>
+            <p class="parallax" data-speed="0.5">Crafting immersive gaming experiences</p>
+            <a href="#projects" class="cta-button shine">View My Work</a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-content">
+    <section id="about" class="about particles-section">
+        <h2 class="glitch" data-text="About Me">About Me</h2>
+        <div class="about-content transform-3d">
             <div class="about-text">
-                <p>With 2 years of experience in game development, I specialize in creating engaging and immersive gaming experiences. My passion lies in developing strategic, action, and FPS games that challenge and entertain players.</p>
-                <p>I have a deep understanding of game mechanics and player psychology, which helps me create compelling gameplay experiences that keep players coming back for more.</p>
+                <p class="parallax" data-speed="0.3">With 2 years of experience in game development, I specialize in creating engaging and immersive gaming experiences. My passion lies in developing strategic, action, and FPS games that challenge and entertain players.</p>
+                <p class="parallax" data-speed="0.4">I have a deep understanding of game mechanics and player psychology, which helps me create compelling gameplay experiences that keep players coming back for more.</p>
             </div>
-            <div class="skills">
-                <h3>Expertise</h3>
+            <div class="skills shine">
+                <h3 class="glitch" data-text="Expertise">Expertise</h3>
                 <ul>
-                    <li>Strategic Games</li>
-                    <li>Action Games</li>
-                    <li>FPS Development</li>
-                    <li>Game Design</li>
-                    <li>Player Experience</li>
+                    <li class="parallax" data-speed="0.2">Strategic Games</li>
+                    <li class="parallax" data-speed="0.25">Action Games</li>
+                    <li class="parallax" data-speed="0.3">FPS Development</li>
+                    <li class="parallax" data-speed="0.35">Game Design</li>
+                    <li class="parallax" data-speed="0.4">Player Experience</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
+    <section id="projects" class="projects particles-section">
+        <h2 class="glitch" data-text="My Projects">My Projects</h2>
         <div class="project-grid">
             <!-- Project cards will be added dynamically via JavaScript -->
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <form id="contact-form">
+    <section id="contact" class="contact particles-section">
+        <h2 class="glitch" data-text="Get In Touch">Get In Touch</h2>
+        <div class="contact-content transform-3d">
+            <form id="contact-form" class="shine">
                 <input type="text" placeholder="Name" required>
                 <input type="email" placeholder="Email" required>
                 <textarea placeholder="Message" required></textarea>
                 <button type="submit" class="cta-button">Send Message</button>
             </form>
             <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" class="transform-3d"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" class="transform-3d"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" class="transform-3d"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Salman Ali. All rights reserved.</p>
+        <p class="shine">&copy; 2024 Salman Ali. All rights reserved.</p>
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        // Initialize particles.js
+        particlesJS.load('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html> 
