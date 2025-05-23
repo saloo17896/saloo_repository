@@ -4,21 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salman Ali - Game Developer Portfolio</title>
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/particles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Preload critical scripts -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" as="script">
 </head>
-<body class="gradient-bg">
+<body>
+    <!-- Diamond Background -->
+    <div class="diamond-bg">
+        <div class="diamond"></div>
+        <div class="diamond"></div>
+        <div class="diamond"></div>
+        <div class="diamond"></div>
+        <div class="diamond"></div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
     <!-- Particles background -->
     <div id="particles-js"></div>
 
     <!-- Header Section -->
-    <header class="transform-3d">
+    <header>
         <nav>
-            <div class="logo shine">SA</div>
+            <div class="logo shine" data-text="SA">SA</div>
             <ul class="nav-links">
                 <li><a href="#home" class="glitch" data-text="Home">Home</a></li>
                 <li><a href="#about" class="glitch" data-text="About">About</a></li>
@@ -33,128 +49,75 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero particles-section">
-        <div class="hero-content">
-            <h1 class="glitch" data-text="Salman Ali">Salman Ali</h1>
-            <h2 class="shine">Game Developer</h2>
-            <p class="parallax" data-speed="0.5">Crafting immersive gaming experiences</p>
-            <a href="#projects" class="cta-button shine">View My Work</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about particles-section">
-        <h2 class="glitch" data-text="About Me">About Me</h2>
-        <div class="about-content transform-3d">
-            <div class="about-text">
-                <p class="parallax" data-speed="0.3">With 2 years of experience in game development, I specialize in creating engaging and immersive gaming experiences. My passion lies in developing strategic, action, and FPS games that challenge and entertain players.</p>
-                <p class="parallax" data-speed="0.4">I have a deep understanding of game mechanics and player psychology, which helps me create compelling gameplay experiences that keep players coming back for more.</p>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Salman Ali">Salman Ali</h1>
+                <h2 class="shine">Game Developer</h2>
+                <p class="parallax" data-speed="0.5">Crafting immersive gaming experiences</p>
+                <a href="#projects" class="cta-button shine">View My Work</a>
             </div>
-            <div class="skills shine">
-                <h3 class="glitch" data-text="Expertise">Expertise</h3>
-                <ul>
-                    <li class="parallax" data-speed="0.2">Strategic Games</li>
-                    <li class="parallax" data-speed="0.25">Action Games</li>
-                    <li class="parallax" data-speed="0.3">FPS Development</li>
-                    <li class="parallax" data-speed="0.35">Game Design</li>
-                    <li class="parallax" data-speed="0.4">Player Experience</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects particles-section">
-        <h2 class="glitch" data-text="My Projects">My Projects</h2>
-        <div class="project-grid">
-            <!-- Project cards will be added dynamically via JavaScript -->
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact particles-section">
-        <h2 class="glitch" data-text="Get In Touch">Get In Touch</h2>
-        <div class="contact-content transform-3d">
-            <form id="contact-form" class="shine">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-            <div class="social-links">
-                <a href="#" target="_blank" class="transform-3d"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank" class="transform-3d"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank" class="transform-3d"><i class="fab fa-twitter"></i></a>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2 class="glitch" data-text="About Me">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="parallax" data-speed="0.3">With 2 years of experience in game development, I specialize in creating engaging and immersive gaming experiences. My passion lies in developing strategic, action, and FPS games that challenge and entertain players.</p>
+                    <p class="parallax" data-speed="0.4">I have a deep understanding of game mechanics and player psychology, which helps me create compelling gameplay experiences that keep players coming back for more.</p>
+                </div>
+                <div class="skills">
+                    <h3 class="glitch" data-text="Expertise">Expertise</h3>
+                    <ul>
+                        <li class="parallax" data-speed="0.2">Strategic Games</li>
+                        <li class="parallax" data-speed="0.25">Action Games</li>
+                        <li class="parallax" data-speed="0.3">FPS Development</li>
+                        <li class="parallax" data-speed="0.35">Game Design</li>
+                        <li class="parallax" data-speed="0.4">Player Experience</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2 class="glitch" data-text="My Projects">My Projects</h2>
+            <div class="project-grid">
+                <!-- Project cards will be added dynamically via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2 class="glitch" data-text="Get In Touch">Get In Touch</h2>
+            <div class="contact-content">
+                <form id="contact-form">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" required></textarea>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <p class="shine">&copy; 2024 Salman Ali. All rights reserved.</p>
+        <p>&copy; 2024 Salman Ali. All rights reserved.</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particles-config.js"></script>
     <script src="js/animations.js"></script>
-    <script>
-        // Initialize particles.js
-        particlesJS.load('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "circle"
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true
-                },
-                "size": {
-                    "value": 3,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html> 

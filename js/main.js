@@ -1,24 +1,24 @@
-// Sample project data
+// Project data
 const projects = [
     {
-        title: "Strategic Battle Arena",
-        description: "A multiplayer strategic combat game with real-time tactical gameplay.",
-        image: "https://via.placeholder.com/300x200",
-        tags: ["Strategy", "Multiplayer", "Unity"],
+        title: "Strategic Conquest",
+        description: "A turn-based strategy game featuring resource management and tactical combat.",
+        image: "images/projects/strategic-conquest.jpg",
+        tags: ["Unity", "C#", "Strategy"],
         link: "#"
     },
     {
-        title: "FPS Adventure",
-        description: "First-person shooter with immersive storyline and dynamic combat system.",
-        image: "https://via.placeholder.com/300x200",
-        tags: ["FPS", "Action", "Unreal Engine"],
+        title: "Action Arena",
+        description: "Fast-paced action game with dynamic combat mechanics and special abilities.",
+        image: "images/projects/action-arena.jpg",
+        tags: ["Unreal Engine", "C++", "Action"],
         link: "#"
     },
     {
-        title: "Action RPG",
-        description: "Role-playing game featuring intense action combat and character progression.",
-        image: "https://via.placeholder.com/300x200",
-        tags: ["RPG", "Action", "Unity"],
+        title: "FPS Combat",
+        description: "First-person shooter with realistic physics and advanced weapon mechanics.",
+        image: "images/projects/fps-combat.jpg",
+        tags: ["Unity", "C#", "FPS"],
         link: "#"
     }
 ];
@@ -52,37 +52,127 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Generate project cards
-function createProjectCard(project) {
-    return `
-        <div class="project-card">
-            <img src="${project.image}" alt="${project.title}">
-            <div class="project-info">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <div class="project-tags">
-                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                </div>
-                <a href="${project.link}" class="project-link" target="_blank">View Project</a>
-            </div>
-        </div>
-    `;
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeProjects();
+    initializeContactForm();
+});
+
+// Initialize project cards
+function initializeProjects() {
+    const projectGrid = document.querySelector('.project-grid');
+    if (!projectGrid) return;
+
+    projects.forEach(project => {
+        const card = createProjectCard(project);
+        projectGrid.appendChild(card);
+    });
 }
 
-// Populate projects section
-const projectGrid = document.querySelector('.project-grid');
-projects.forEach(project => {
-    projectGrid.innerHTML += createProjectCard(project);
-});
+// Create project card element
+function createProjectCard(project) {
+    const card = document.createElement('div');
+    card.className = 'project-card animate';
+    
+    card.innerHTML = `
+        <img src="${project.image}" alt="${project.title}" onerror="this.src='images/placeholder.jpg'">
+        <div class="project-info">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="project-tags">
+                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <a href="${project.link}" class="project-link" target="_blank" rel="noopener noreferrer">
+                View Project <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    `;
+    
+    return card;
+}
 
-// Form submission handling
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert('Thank you for your message! I will get back to you soon.');
-    contactForm.reset();
-});
+// Initialize contact form
+function initializeContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
+        try {
+            // Here you would typically send the data to your backend
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            showNotification('Message sent successfully!', 'success');
+            form.reset();
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            showNotification('Error sending message. Please try again.', 'error');
+        }
+    });
+}
+
+// Show notification
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+        notification.classList.add('show');
+    });
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Add notification styles
+document.head.insertAdjacentHTML('beforeend', `
+    <style>
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 500;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            background-color: #4CAF50;
+        }
+
+        .notification.error {
+            background-color: #f44336;
+        }
+
+        .notification.info {
+            background-color: #2196F3;
+        }
+    </style>
+`);
 
 // Add scroll animations
 const observerOptions = {
